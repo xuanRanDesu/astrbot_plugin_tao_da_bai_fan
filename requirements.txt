@@ -1,0 +1,2 @@
+# AstrBot 运行环境自带 websockets 与 Pillow，无需额外安装。
+# 若你的环境确实缺，手动装：pip install websockets Pillow

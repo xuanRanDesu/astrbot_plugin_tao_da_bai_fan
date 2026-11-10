@@ -1,0 +1,28 @@
+name: astrbot_plugin_tao_da_bai_fan
+display_name: 讨大白饭
+short_desc: 一句 /讨大白饭，现去 DeepSeek 工作台捞一张「充 10 元」的支付宝二维码，画成卡片发到群里。
+desc: |
+  支付二维码是动态的，放图会过期。这个插件直接驱动本机 Edge/Chrome（独立 profile，只登录一次），
+  每次收到指令就打开 platform.deepseek.com/top_up，选好金额与支付宝、点「去支付」，
+  把弹窗里的二维码 canvas 取出来，补上白边、画成一张讨饭卡片发回群里。
+
+  发码之后还会盯着「账单 → 充值账单」：那笔订单一旦变成「成功」，就回到当初发码的群里说一句谢谢。
+
+  要点：
+  - 每次都是实时新码，不存在「发出去才发现 15 分钟前就过期了」。
+  - 用独立浏览器 profile，不碰你正在用的浏览器；窗口默认挪到屏幕外，不打断你。
+  - 掉登录时 /讨大白饭 登录 会弹一个看得见的窗口，登一次就好。
+  - 无头模式会被风控（页面报「请求异常」），所以默认走「有头 + 屏幕外」。
+help: |
+  /讨大白饭        现取一张二维码发到群里
+  /讨大白饭 登录   打开可见窗口重新登录（主人）
+  /讨大白饭 状态   看浏览器/登录/最近抓码情况（主人）
+  /讨大白饭 刷新   丢掉缓存重新捞一张（主人）
+  /讨大白饭 我是谁 看自己的 openid，方便填配置
+version: 1.1.1
+author: 大肥鱼
+repo: https://github.com/davidxu1209/astrbot_plugin_tao_da_bai_fan
+astrbot_version: ">=4.16,<5"
+support_platforms:
+  - aiocqhttp
+  - qq_official

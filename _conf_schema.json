@@ -1,0 +1,137 @@
+{
+  "enabled": {
+    "type": "bool",
+    "description": "启用讨大白饭",
+    "hint": "关掉后 /讨大白饭 只会回一句提示，不会去浏览器捞码。",
+    "default": true
+  },
+  "amount": {
+    "type": "int",
+    "description": "充值金额（元）",
+    "hint": "必须是充值页上的固定档位：10 / 20 / 50 / 100 / 300 / 500。默认 10。",
+    "default": 10
+  },
+  "card_enabled": {
+    "type": "bool",
+    "description": "画成讨饭卡片",
+    "hint": "开启后会把二维码贴到一张带文案的卡片上（补白边，更好扫）。关掉就直接发工作台给的原始二维码。",
+    "default": true
+  },
+  "title": {
+    "type": "string",
+    "description": "卡片标题",
+    "hint": "有 assets/mascot.png 表情包素材时，标题和副标题不显示（表情包自带文字）。",
+    "default": "讨大白饭"
+  },
+  "subtitle": {
+    "type": "string",
+    "description": "卡片副标题",
+    "hint": "同上：有表情包时不显示。",
+    "default": "大肥鱼饿了，赏一碗白饭吧"
+  },
+  "footer": {
+    "type": "string",
+    "description": "卡片底部大字",
+    "hint": "可以用 {amount} 占位，会自动替换成上面的金额，例如「支付宝扫一扫 · {amount} 元」。",
+    "default": "支付宝扫一扫 · {amount} 元"
+  },
+  "note": {
+    "type": "string",
+    "description": "卡片底部小字",
+    "default": "二维码有效期约 15 分钟，过期就再发一次"
+  },
+  "cooldown_seconds": {
+    "type": "int",
+    "description": "同一会话的冷却时间（秒）",
+    "hint": "抓一张码大约要 10 秒左右，给个冷却防止群里刷屏。填 0 表示不冷却。",
+    "default": 30
+  },
+  "cache_seconds": {
+    "type": "int",
+    "description": "二维码缓存秒数",
+    "hint": "0 = 每次现捞一张新码（默认，推荐）。大于 0 时这段时间内重复请求会复用同一张码——注意同一笔订单只能付一次。",
+    "default": 0
+  },
+  "send_working_hint": {
+    "type": "bool",
+    "description": "抓码前先说一句「稍等」",
+    "hint": "抓码要十几秒，先说一声不至于让人以为机器人卡住了。",
+    "default": true
+  },
+  "enable_thanks": {
+    "type": "bool",
+    "description": "有人付款就回群道谢",
+    "hint": "发码后会挂一个监听：定期查「账单 → 充值账单」，那笔订单状态变成「成功」就在对应群里说句谢谢。",
+    "default": true
+  },
+  "poll_interval_seconds": {
+    "type": "int",
+    "description": "查账单间隔（秒）",
+    "hint": "查一次账单大约 2 秒，别设太小（最小按 8 秒算）。",
+    "default": 20
+  },
+  "watch_minutes": {
+    "type": "int",
+    "description": "单笔订单盯多久（分钟）",
+    "hint": "支付二维码 15 分钟有效，留点余量。超过这个时间还没成功就不再盯了。",
+    "default": 20
+  },
+  "thank_texts": {
+    "type": "string",
+    "description": "道谢文案",
+    "hint": "一行一条，随机挑一条发送；可以用 {amount} 占位金额。",
+    "default": "到账啦！¥{amount} 白饭钱收下，谢谢投喂本鱼的大善人 (๑˃̵ᴗ˂̵)و\n呜哇，¥{amount} 到账！不知道是哪位好心人，本鱼先端起碗道个谢～\n白饭 +¥{amount}，本鱼的碗又满了——谢谢这位见义勇为的饭票侠！\n叮，收到 ¥{amount} 投喂！本鱼这就把饭吃香一点，下次还来讨。"
+  },
+  "allow_private": {
+    "type": "bool",
+    "description": "允许私聊讨饭",
+    "default": true
+  },
+  "allowed_groups": {
+    "type": "string",
+    "description": "允许讨饭的群号",
+    "hint": "用逗号分隔，例如「123456,789012」。留空表示所有群都可以。",
+    "default": ""
+  },
+  "admin_openids": {
+    "type": "string",
+    "description": "管理员 openid / QQ",
+    "hint": "除了 AstrBot 面板里设的管理员，还能额外指定谁能用「登录 / 状态 / 刷新」。QQ 官方机器人填群里发的 openid（发「/讨大白饭 我是谁」可查），OneBot 填 QQ 号。逗号分隔。",
+    "default": ""
+  },
+  "allow_anyone_admin": {
+    "type": "bool",
+    "description": "允许所有人用管理指令",
+    "hint": "打开后群里任何人都能打开登录窗口、看状态、刷新。不建议长期打开。",
+    "default": false
+  },
+  "cdp_port": {
+    "type": "int",
+    "description": "调试端口",
+    "hint": "插件自己拉起的 Edge 会监听这个本地端口（只监听 127.0.0.1）。改端口只在和别的东西撞车时才需要。",
+    "default": 9222
+  },
+  "edge_path": {
+    "type": "string",
+    "description": "浏览器路径",
+    "hint": "留空自动找 Edge / Chrome。找不到时再手动填，例如 C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe。",
+    "default": ""
+  },
+  "headless": {
+    "type": "bool",
+    "description": "无头模式",
+    "hint": "无头模式会被 DeepSeek 风控拦住（页面报「请求异常」），所以默认关闭。想要不弹窗请保持关闭并使用下面的「窗口挪出屏幕」。",
+    "default": false
+  },
+  "offscreen": {
+    "type": "bool",
+    "description": "窗口挪到屏幕外",
+    "hint": "开着时浏览器照常渲染但窗口在屏幕外，视觉上不打扰人；登录时用的窗口不受影响，会正常显示。",
+    "default": true
+  },
+  "fetch_timeout_seconds": {
+    "type": "int",
+    "description": "抓码超时（秒）",
+    "default": 60
+  }
+}
