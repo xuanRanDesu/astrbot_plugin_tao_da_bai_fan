@@ -301,7 +301,7 @@ def render_card(
     "讨大白饭：一句 /讨大白饭，机器人现去 DeepSeek 开放平台捞一张「充 10 元」的支付宝二维码，"
     "画成卡片递到群里。码是实时的，掉登录时发「/讨大白饭 登录」重新登一次。",
     "1.1.1",
-    "https://github.com/davidxu1209/astrbot_plugin_tao_da_bai_fan",
+    "https://github.com/xuanRanDesu/astrbot_plugin_tao_da_bai_fan",
 )
 class TaoDaBaiFanPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):

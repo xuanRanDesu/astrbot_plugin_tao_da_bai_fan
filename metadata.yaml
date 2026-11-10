@@ -21,7 +21,7 @@ help: |
   /讨大白饭 我是谁 看自己的 openid，方便填配置
 version: 1.1.1
 author: 大肥鱼
-repo: https://github.com/davidxu1209/astrbot_plugin_tao_da_bai_fan
+repo: https://github.com/xuanRanDesu/astrbot_plugin_tao_da_bai_fan
 astrbot_version: ">=4.16,<5"
 support_platforms:
   - aiocqhttp
